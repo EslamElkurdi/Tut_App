@@ -37,6 +37,26 @@ ThemeData getApplicationTheme()
 
 
     // button Theme
+    buttonTheme: ButtonThemeData(
+      shape: const StadiumBorder(),
+      disabledColor: ColorManager.grey1,
+      splashColor: ColorManager.primaryOpacity70,
+      buttonColor: ColorManager.primary,
+    ),
+
+    // elevated button theme
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        textStyle: getRegularStyle(
+            color: ColorManager.white,
+          fontSize: FontSize.s17
+        ),
+        primary: ColorManager.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s12)
+        )
+      )
+    )
 
 
     // input decoration Theme (Text Form Field)
