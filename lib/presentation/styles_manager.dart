@@ -34,3 +34,9 @@ TextStyle getBoldStyle({double fontSize = FontSize.s12, required Color color})
 {
   return _getTextStyle(fontSize, FontWeightManager.Bold, color);
 }
+
+// medium style
+TextStyle getMediumStyle({double fontSize = FontSize.s12, required Color color})
+{
+  return _getTextStyle(fontSize, FontWeightManager.Medium, color);
+}

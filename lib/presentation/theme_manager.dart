@@ -56,14 +56,20 @@ ThemeData getApplicationTheme()
           borderRadius: BorderRadius.circular(AppSize.s12)
         )
       )
-    )
+    ),
 
 
     // input decoration Theme (Text Form Field)
 
 
     // Text theme
-
+    textTheme: TextTheme(
+      displayLarge: getLightStyle(color: ColorManager.white, fontSize: FontSize.s22),
+      headline1: getSemiBoldStyle(color: ColorManager.darkGrey, fontSize: FontSize.s16),
+      subtitle1: getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
+      caption: getRegularStyle(color: ColorManager.grey1),
+      bodyText1: getRegularStyle(color: ColorManager.grey),
+  )
 
   );
 }
