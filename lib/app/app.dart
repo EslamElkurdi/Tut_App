@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/presentation/theme_manager.dart';
+import 'package:tut_app/presentation/resources/routes_manager.dart';
+import 'package:tut_app/presentation/resources/theme_manager.dart';
 
-// ignore: must_be_immutable
+
+
 class MyApp extends StatefulWidget {
 
-  MyApp._internal();
+  const MyApp._internal();
 
-  int appState = 0;
+   final int appState = 0;
 
-  static final MyApp _instance = MyApp._internal();
+  static const MyApp _instance = MyApp._internal();
 
   factory MyApp() => _instance;
 
@@ -23,6 +25,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: RoutesGenerator.getRoute,
+      initialRoute: Routes.splashRoute,
       theme: getApplicationTheme(),
     );
   }
