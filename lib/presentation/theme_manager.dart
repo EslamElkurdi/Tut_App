@@ -60,6 +60,53 @@ ThemeData getApplicationTheme()
 
 
     // input decoration Theme (Text Form Field)
+      inputDecorationTheme: InputDecorationTheme(
+        // content Padding
+        contentPadding: const EdgeInsets.all(AppPadding.p8),
+        // hint style
+        hintStyle: getRegularStyle(
+            color: ColorManager.grey, fontSize: FontSize.s14
+        ),
+        labelStyle: getMediumStyle(
+            color: ColorManager.grey, fontSize: FontSize.s14
+        ),
+        errorStyle: getRegularStyle(
+            color: ColorManager.error
+        ),
+        // enabled border style
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: ColorManager.primary, width: AppSize.s1_5
+          ),
+          borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))
+        ),
+
+        // focused border style
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: ColorManager.grey, width: AppSize.s1_5
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))
+        ),
+
+        // error border style
+        errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: ColorManager.error, width: AppSize.s1_5
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))
+        ),
+
+        // focused error border style
+        focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: ColorManager.primary, width: AppSize.s1_5
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))
+        )
+
+
+      ),
 
 
     // Text theme
