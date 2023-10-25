@@ -111,9 +111,11 @@ ThemeData getApplicationTheme()
 
     // Text theme
     textTheme: TextTheme(
-      displayLarge: getLightStyle(color: ColorManager.white, fontSize: FontSize.s22),
+      displayLarge: getSemiBoldStyle(color: ColorManager.darkGrey, fontSize: FontSize.s16),
       headlineLarge: getSemiBoldStyle(color: ColorManager.darkGrey, fontSize: FontSize.s16),
-      titleMedium: getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
+      headlineMedium: getRegularStyle(color: ColorManager.darkGrey, fontSize: FontSize.s14),
+      titleMedium: getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s14),
+
       bodyLarge: getRegularStyle(color: ColorManager.grey1),
       bodySmall: getRegularStyle(color: ColorManager.grey),
   )
