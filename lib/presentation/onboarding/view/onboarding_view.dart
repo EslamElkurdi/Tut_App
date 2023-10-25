@@ -184,14 +184,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
 }
 
-class SliderObject
-{
-  String title;
-  String subTitle;
-  String image;
 
-  SliderObject(this.title, this.subTitle, this.image);
-}
 
 class OnBoardingPage extends StatelessWidget {
   final SliderObject _sliderObject;
