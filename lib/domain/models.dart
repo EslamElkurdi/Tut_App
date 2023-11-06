@@ -14,4 +14,6 @@ class SliderViewObject {
 
   SliderViewObject(this.sliderObject,this.currentIndex,this.numOfSlides);
 
+
+
 }
