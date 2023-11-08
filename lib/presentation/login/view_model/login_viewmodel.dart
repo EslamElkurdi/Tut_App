@@ -9,6 +9,9 @@ class LoginViewModel extends BaseViewModel implements LoginViewModelInputs, Logi
   final StreamController _userNameStreamController = StreamController<String>.broadcast();
   final StreamController _passwordStreamController = StreamController<String>.broadcast();
 
+  final StreamController _areAllInputsValidStreamController = StreamController<void>.broadcast();
+
+
   var loginObject = LoginObject("", "");
 
   late LoginUseCase _loginUseCase;
@@ -18,6 +21,7 @@ class LoginViewModel extends BaseViewModel implements LoginViewModelInputs, Logi
   void dispose() {
     _userNameStreamController.close();
     _passwordStreamController.close();
+    _areAllInputsValidStreamController.close();
   }
 
   @override
@@ -29,20 +33,25 @@ class LoginViewModel extends BaseViewModel implements LoginViewModelInputs, Logi
   Sink get inputPassword => _passwordStreamController.sink;
 
   @override
-  // TODO: implement inputUserName
   Sink get inputUserName => _userNameStreamController.sink;
+
+  @override
+
+  Sink get inputAreAllInputsValid => _areAllInputsValidStreamController.sink;
+
 
   @override
   setPassword(String password) {
     inputPassword.add(password);
     loginObject = loginObject.copyWith(password: password);
+    inputAreAllInputsValid.add(null);
   }
 
   @override
   setUserName(String username) {
     inputUserName.add(username);
     loginObject = loginObject.copyWith(userName: username);
-
+    inputAreAllInputsValid.add(null);
   }
 
   @override
@@ -62,12 +71,14 @@ class LoginViewModel extends BaseViewModel implements LoginViewModelInputs, Logi
 
   // outputs
   @override
-  // TODO: implement outIsPasswordValid
   Stream<bool> get outIsPasswordValid => _passwordStreamController.stream.map((password) => _isPasswordValid(password));
 
   @override
-  // TODO: implement outIsUserNameValid
   Stream<bool> get outIsUserNameValid => _userNameStreamController.stream.map((userName) => _isUserNameValid(userName));
+
+  @override
+  Stream<bool> get outAreAllInputsValid => _areAllInputsValidStreamController.stream.map((_) => _areAllInputsValid());
+
 
   bool _isPasswordValid(String password){
     return password.isNotEmpty;
@@ -77,6 +88,11 @@ class LoginViewModel extends BaseViewModel implements LoginViewModelInputs, Logi
     return userName.isNotEmpty;
   }
 
+  bool _areAllInputsValid(){
+    return _isUserNameValid(loginObject.userName) && _isPasswordValid(loginObject.password);
+  }
+
+
 }
 
 abstract class LoginViewModelInputs{
@@ -85,11 +101,18 @@ abstract class LoginViewModelInputs{
   login();
 
   Sink get inputUserName;
+
   Sink get inputPassword;
+
+  Sink get inputAreAllInputsValid;
 }
 
 abstract class LoginViewModelOutputs{
   Stream<bool> get outIsUserNameValid;
+
   Stream<bool> get outIsPasswordValid;
+
+  Stream<bool> get outAreAllInputsValid;
+
 }
 
